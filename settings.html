@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - WeatherFlow</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="weather-bg" id="weatherBg">
+        <div class="particles" id="particles"></div>
+        <div class="clouds" id="clouds">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="8" fill="#FFD700"/>
+                        <path d="M16 8V2M16 30V24M8 16H2M30 16H24M10.34 10.34L6 6M26 26L21.66 21.66M10.34 21.66L6 26M26 6L21.66 10.34" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="logo-text">WeatherFlow</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="forecast.html" class="nav-link">Forecast</a></li>
+                <li><a href="settings.html" class="nav-link active">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Page Title -->
+        <section class="page-header">
+            <div class="page-title">
+                <h1>Settings</h1>
+                <p>Customize your weather experience</p>
+            </div>
+            <div class="back-btn">
+                <a href="index.html" class="action-btn secondary-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15 10H5M10 5l-5 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Settings Sections -->
+        <section class="settings-section">
+            <!-- Temperature Settings -->
+            <div class="settings-group glass-card">
+                <h2 class="settings-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Temperature Units
+                </h2>
+                <div class="settings-content">
+                    <div class="toggle-group">
+                        <label class="toggle-label">Temperature Unit</label>
+                        <div class="toggle-options">
+                            <button class="toggle-btn active" id="celsiusBtn" data-unit="celsius">°C</button>
+                            <button class="toggle-btn" id="fahrenheitBtn" data-unit="fahrenheit">°F</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme Settings -->
+            <div class="settings-group glass-card">
+                <h2 class="settings-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1v6M12 18v5M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M18 12h5M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Theme
+                </h2>
+                <div class="settings-content">
+                    <div class="toggle-group">
+                        <label class="toggle-label">Theme Mode</label>
+                        <div class="toggle-options">
+                            <button class="toggle-btn active" id="lightBtn" data-theme="light">Light</button>
+                            <button class="toggle-btn" id="darkBtn" data-theme="dark">Dark</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animation Settings -->
+            <div class="settings-group glass-card">
+                <h2 class="settings-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2l2.5 5h5.5l-4.5 3.5L16 16l-6-4.5L4 16l2.5-5.5L2 7h5.5z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    Animations
+                </h2>
+                <div class="settings-content">
+                    <div class="switch-group">
+                        <label class="switch-label">Enable Animations</label>
+                        <label class="switch">
+                            <input type="checkbox" id="animationsToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="switch-group">
+                        <label class="switch-label">Background Effects</label>
+                        <label class="switch">
+                            <input type="checkbox" id="backgroundToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="switch-group">
+                        <label class="switch-label">Sound Effects</label>
+                        <label class="switch">
+                            <input type="checkbox" id="soundToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Settings -->
+            <div class="settings-group glass-card">
+                <h2 class="settings-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2a8 8 0 0 0-8 8c0 4.5 8 12 8 12s8-7.5 8-12a8 8 0 0 0-8-8z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Location
+                </h2>
+                <div class="settings-content">
+                    <div class="switch-group">
+                        <label class="switch-label">Auto-detect Location</label>
+                        <label class="switch">
+                            <input type="checkbox" id="autoLocationToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Default City</label>
+                        <input type="text" id="defaultCity" class="settings-input" placeholder="Enter default city">
+                    </div>
+                    <div class="saved-cities">
+                        <label class="input-label">Saved Cities</label>
+                        <div class="cities-list" id="savedCitiesList">
+                            <div class="city-item">
+                                <span>New York</span>
+                                <button class="remove-city">×</button>
+                            </div>
+                            <div class="city-item">
+                                <span>London</span>
+                                <button class="remove-city">×</button>
+                            </div>
+                        </div>
+                        <button class="add-city-btn">+ Add City</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-group glass-card">
+                <h2 class="settings-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Notifications
+                </h2>
+                <div class="settings-content">
+                    <div class="switch-group">
+                        <label class="switch-label">Weather Alerts</label>
+                        <label class="switch">
+                            <input type="checkbox" id="alertsToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="switch-group">
+                        <label class="switch-label">Daily Summary</label>
+                        <label class="switch">
+                            <input type="checkbox" id="dailyToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="switch-group">
+                        <label class="switch-label">Severe Weather Warnings</label>
+                        <label class="switch">
+                            <input type="checkbox" id="severeToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <div class="settings-actions">
+                <button class="save-btn primary-btn" id="saveSettings">Save Settings</button>
+                <button class="reset-btn secondary-btn" id="resetSettings">Reset to Default</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 WeatherFlow. Premium Weather Dashboard.</p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">API</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

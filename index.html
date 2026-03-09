@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherFlow - Premium Weather Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="weather-bg" id="weatherBg">
+        <div class="particles" id="particles"></div>
+        <div class="clouds" id="clouds">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="8" fill="#FFD700"/>
+                        <path d="M16 8V2M16 30V24M8 16H2M30 16H24M10.34 10.34L6 6M26 26L21.66 21.66M10.34 21.66L6 26M26 6L21.66 10.34" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="logo-text">WeatherFlow</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="forecast.html" class="nav-link">Forecast</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Premium Weather Experience</h1>
+                <p class="hero-subtitle">Real-time weather with stunning animations</p>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Enter city name..." class="search-input">
+                        <button id="searchBtn" class="search-btn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <button id="locationBtn" class="location-btn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2a6 6 0 0 0-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 0 0-6-6z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <circle cx="10" cy="8" r="2" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Weather Section -->
+        <section class="current-weather" id="currentWeather">
+            <div class="weather-card glass-card">
+                <div class="weather-header">
+                    <h2 class="city-name" id="cityName">New York</h2>
+                    <div class="current-time" id="currentTime">12:00 PM</div>
+                </div>
+                
+                <div class="weather-main">
+                    <div class="weather-icon-container">
+                        <div class="weather-icon" id="weatherIcon">
+                            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="30" fill="#FFD700"/>
+                                <path d="M60 30V10M60 110V90M30 60H10M110 60H90M40 40L25 25M95 95L80 80M40 80L25 95M95 25L80 40" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-info">
+                        <div class="temperature">
+                            <span class="temp-value" id="tempValue">72</span>
+                            <span class="temp-unit">°F</span>
+                        </div>
+                        <div class="weather-description" id="weatherDescription">Clear Sky</div>
+                        <div class="feels-like">Feels like <span id="feelsLike">75°F</span></div>
+                    </div>
+                </div>
+                
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2v16M2 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="detail-info">
+                            <div class="detail-label">Humidity</div>
+                            <div class="detail-value" id="humidity">65%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2l2.5 5h5.5l-4.5 3.5L16 16l-6-4.5L4 16l2.5-5.5L2 7h5.5z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="detail-info">
+                            <div class="detail-label">Wind Speed</div>
+                            <div class="detail-value" id="windSpeed">8 mph</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="M10 6v4l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="detail-info">
+                            <div class="detail-label">Pressure</div>
+                            <div class="detail-value" id="pressure">1013 mb</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <div class="action-buttons">
+                <a href="forecast.html" class="action-btn primary-btn">
+                    <span>View Forecast</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M5 10h10M10 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </a>
+                <a href="settings.html" class="action-btn secondary-btn">
+                    <span>Settings</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                        <path d="M10 1v3M10 16v3M1 10h3M16 10h3M4.22 4.22l2.12 2.12M13.66 13.66l2.12 2.12M4.22 15.78l2.12-2.12M13.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 WeatherFlow. Premium Weather Dashboard.</p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">API</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
